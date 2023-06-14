@@ -1,20 +1,56 @@
 import React, { useState } from "react";
 import "./App.css";
-import Mainmenu from "./assets/MainMenu.png";
+import MWWlogo from "./assets/MWW-logo.png";
 import {
   Button,
   Heading,
   Text,
   EmptyState,
   IconButton,
+  TextField,
 } from "@myonlinestore/bricks";
 
 function App() {
   return (
     <div className="App">
-      <div style={{ marginLeft: "-80px" }} className="content">
-        <div className="mainmenu">
-          <img className="'mainmenuimage" src={Mainmenu} />
+      <div className="sidebar">
+        <div className="MWW-logo">
+          <img src={MWWlogo} />
+        </div>
+        <ul>
+          <li>
+            <a href="#">
+              <span className="item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span className="item">Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span className="item">Klanten</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" className="active">
+              <span className="item">Producten</span>
+            </a>
+            <div className="submenu">
+              <a href="#" className="active">
+                <span className="item">Categorieën</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div className="content">
+        <div className="topbar">
+          <div className="searchbar">
+            <TextField prefix="Artikelen" placeholder="Zoeken" />
+          </div>
         </div>
         <div className="catheader">
           <Heading>Categorieën</Heading>
@@ -33,7 +69,6 @@ function App() {
           <EmptyState
             title="Tijd voor je eerste categorie!"
             message="Maak het beheren van groepen producten makkelijker."
-            horizontal="yes"
           />
           <Button className="catadd" title="Categorie toevoegen" />
         </div>

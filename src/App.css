@@ -1,6 +1,5 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 2rem;
   text-align: center;
 }
@@ -42,38 +41,106 @@
 }
 
 .catadd {
-  margin-right: 190px !important;
-  margin-top: -80px !important;
+  margin: auto;
+  margin-top: 20px !important;
 }
 
 .empty {
   background-color: white !important;
-  padding-left: 60px !important;
+
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 6px !important;
   border: 2px solid #e5eaf2;
+  width: 60vw;
 }
 
 body {
   background-color: #f5f6fa !important;
 }
 
+.app {
+  display: flex;
+}
+
 .catheader {
   margin-right: 180px !important;
   text-align: left;
   max-width: 600px;
-  margin-top: -50px;
 }
 
-.mainmenu {
+.content {
+  padding-left: 300px;
+  float: right;
+}
+
+.sidebar {
+  background-color: #001333;
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  padding: 20px 0;
+  transition: all 0.5s ease;
+  float: right;
 }
 
-.mainmenuimage {
-  width: 100%;
-  height: auto;
+.MWW-logo img {
+  width: 180px;
+  margin-top: 3px;
+}
+
+.sidebar ul li a {
   display: block;
+  padding: 13px 30px;
+  color: rgb(241, 237, 237);
+  font-size: 16px;
+  position: relative;
+  text-align: left;
+}
+
+.sidebar ul li a span {
+  margin-left: 20px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  color: #ffffff;
+  background: #0f213f;
+  border-radius: 5px;
+}
+
+.sidebar li {
+  list-style-type: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  padding-left: 0px;
+}
+
+.submenu a {
+  margin-left: 40px !important;
+  margin-top: 10px;
+}
+
+.submenu a span {
+  margin-left: 10px !important;
+  margin-right: 20px;
+}
+
+.topbar {
+  position: fixed;
+  left: 300px;
+  height: 10px;
+  top: 0;
+  display: flex;
+}
+
+.searchbar {
+  margin-top: 20px;
+  margin-left: 30px;
 }
