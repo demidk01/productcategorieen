@@ -8,14 +8,26 @@ import {
   EmptyState,
   IconButton,
   TextField,
+  Modal,
+  ButtonGroup,
 } from "@myonlinestore/bricks";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="App">
       <div className="sidebar">
         <div className="MWW-logo">
-          <img src={MWWlogo} />
+          <img src={MWWlogo} alt="MWW Logo" />
         </div>
         <ul>
           <li>
@@ -61,18 +73,28 @@ function App() {
           </Text>
           <IconButton icon="filter" iconSize="small" />
         </div>
-        <br></br>
+        <br />
         {/* <Button onClick={() => alert("Klik")} title="Hoi!" variant="primary" /> */}
-        <br></br>
-
+        <br />
         <div className="empty">
           <EmptyState
             title="Tijd voor je eerste categorie!"
             message="Maak het beheren van groepen producten makkelijker."
           />
-          <Button className="catadd" title="Categorie toevoegen" />
+          <Button
+            onClick={openModal}
+            className="catadd"
+            title="Categorie toevoegen"
+          />
         </div>
       </div>
+
+      {showModal && (
+        <Modal show={showModal} title="yes" onClose={closeModal}>
+          blajfrnjgt
+          {/* Modal content */}
+        </Modal>
+      )}
     </div>
   );
 }
