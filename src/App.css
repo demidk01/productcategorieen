@@ -153,3 +153,47 @@ body {
   background-image: url(assets/kruisje.png);
   background-size: contain;
 }
+
+.nameinput,
+.imageinput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sc-iKGpAt.brEBPq {
+  width: 70% !important;
+}
+
+.sc-iKGpAt.bIWYiw {
+  width: 70% !important;
+}
+
+.ondertekst {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.imagefield {
+  padding-right: 392px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid rgb(204, 213, 229);
+  border-radius: 3px;
+  padding-left: 10px !important;
+  width: 100px;
+}
+
+.imageinput {
+  margin-top: 20px;
+}
+
+.preview-image {
+  max-width: 100px;
+  max-height: 200px;
+}
+
+.toevoegenbutton {
+  margin-top: 40px !important;
+  margin-left: 600px !important;
+  max-width: 120px;
+}
