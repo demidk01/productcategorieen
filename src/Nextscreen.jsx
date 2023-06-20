@@ -1,11 +1,161 @@
-import React from "react";
+import React, { useState } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
+import Mickey from "./assets/mickey.jpg";
+import Bolcactus from "./assets/Bolcactus.png";
+import Spriet from "./assets/spriet.jpg";
+import Categorieoverzicht from "./Categorieoverzicht";
+import {
+  Button,
+  Heading,
+  Text,
+  EmptyState,
+  TextField,
+  Modal,
+  Checkbox,
+} from "@myonlinestore/bricks";
 
-function Nextscreen() {
+function Nextscreen({ navigate }) {
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const producttoevoegen = () => {
+    navigate("Categorieoverzicht");
+  };
+
+  const products = [
+    {
+      id: 1,
+      image: Mickey,
+      name: "Mickey",
+      price: "€10.00",
+    },
+    {
+      id: 2,
+      image: Bolcactus,
+      name: "Bolcactus",
+      price: "€15.00",
+    },
+    {
+      id: 3,
+      image: Spriet,
+      name: "Spriet",
+      price: "€20.00",
+    },
+    {
+      id: 4,
+      image: Mickey,
+      name: "Mickey",
+      price: "€10.00",
+    },
+    {
+      id: 5,
+      image: Bolcactus,
+      name: "Bolcactus",
+      price: "€15.00",
+    },
+    {
+      id: 6,
+      image: Spriet,
+      name: "Spriet",
+      price: "€20.00",
+    },
+  ];
+
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
+
+      <div className="content">
+        <div className="topbar">
+          <div className="searchbar">
+            <TextField prefix="Artikelen" placeholder="Zoeken" />
+          </div>
+        </div>
+        <div className="catheader">
+          <Heading>Planten</Heading>
+          <Text>
+            Je hebt onderstaande categorieën aangemaakt. Zit de juiste categorie
+            er niet tussen? Bekijk in het vraag & antwoord artikel hoe je een
+            categorie aanmaakt. Wijzigingen worden automatisch opgeslagen.
+          </Text>
+          <Button
+            className="instellingen"
+            variant="secondary"
+            title="Nieuwe subcategorie"
+          />
+          <Button
+            className="instellingen"
+            variant="secondary"
+            title="Instellingen"
+          />
+        </div>
+        <br />
+        <br />
+        <div className="empty">
+          <EmptyState
+            title="Voeg producten toe!"
+            message="Deze categorie is nu nog leeg."
+          />
+          <Button
+            className="catadd"
+            title="Producten toevoegen"
+            onClick={openModal}
+          />
+        </div>
+      </div>
+
+      {showModal && (
+        <Modal
+          size="medium"
+          show={showModal}
+          title="Producten toevoegen"
+          onClose={closeModal}
+        >
+          <div className="ondertekst">
+            <Text>Voeg producten toe aan de categorie "Planten"</Text>
+          </div>
+          <div className="productentoevoegen">
+            <TextField type="searchbar" className="textsearchbar" />
+            <table className="table">
+              <thead className="thead">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th className="table-cellname">Product</th>
+                  <th className="table-cellprice">Prijs</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product.id}>
+                    <td>
+                      <Checkbox />
+                    </td>
+                    <td>
+                      <img src={product.image} alt={product.name} />
+                    </td>
+                    <td className="table-cell">{product.name}</td>
+                    <td className="table-cellprice">{product.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Button
+            className="toevoegenbutton"
+            title="Toevoegen"
+            variant="primary"
+            onClick={producttoevoegen}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

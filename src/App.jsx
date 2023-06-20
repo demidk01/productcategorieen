@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Homescreen from "./Homescreen";
 import Nextscreen from "./Nextscreen";
+import Categorieoverzicht from "./Categorieoverzicht";
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("Homescreen");
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="App">
       {currentScreen === "Homescreen" && <Homescreen navigate={navigate} />}
-      {currentScreen === "Nextscreen" && <Nextscreen />}
+      {currentScreen === "Nextscreen" && <Nextscreen navigate={navigate} />}
+      {currentScreen === "Categorieoverzicht" && <Categorieoverzicht />}
     </div>
   );
 }

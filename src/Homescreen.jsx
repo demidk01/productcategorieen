@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
+import Nextscreen from "./Nextscreen";
 
 import {
   Button,
