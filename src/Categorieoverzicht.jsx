@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@myonlinestore/bricks";
 
-function Categorieoverzicht(navigate) {
+function Categorieoverzicht({ navigate }) {
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
@@ -41,11 +41,13 @@ function Categorieoverzicht(navigate) {
         </div>
         <br />
         <br />
-        <div className="empty">
-          <EmptyState
-            title="Voeg producten toe!"
-            message="Deze categorie is nu nog leeg."
-          />
+        <div className="catselect">
+          <div className="empty">
+            <EmptyState
+              title="Voeg producten toe!"
+              message="Deze categorie is nu nog leeg."
+            />
+          </div>
         </div>
       </div>
     </div>

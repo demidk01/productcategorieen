@@ -211,9 +211,18 @@ body {
   border-radius: 3px;
 }
 
-.productentoevoegen img {
+.productentoevoegen img,
+.categoriebeheer img {
   max-width: 30px;
   max-height: 30px;
+}
+
+.categoriebeheer {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px !important;
+  border: 2px solid #e5eaf2;
+  width: 60vw;
 }
 
 .table-cell {
@@ -246,5 +255,35 @@ body {
   font-family: Montserrat;
   font-size: 14px;
   font-weight: 700 !important;
-  margin-bottom: 10px;
+}
+
+.catselect {
+  margin-top: 20px;
+}
+
+.sc-iKGpAt.brEBPq {
+  margin-top: 10px;
+}
+
+.toprow {
+  display: flex;
+}
+
+.sc-fYdXmn.hNzWcq {
+  margin-left: 20px;
+  max-width: 200px !important;
+  max-height: 40px;
+  margin-top: 10px;
+}
+
+.fTtnVw.opslaanbutton {
+  float: left;
+  margin-top: 50px !important;
+}
+
+.producttoevoegenadd.iJYPJs {
+  margin-left: 0px !important;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
 }

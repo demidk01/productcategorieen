@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
 import Bolcactus from "./assets/Bolcactus.png";
 import Spriet from "./assets/spriet.jpg";
-import Categorieoverzicht from "./Categorieoverzicht";
+
 import {
   Button,
   Heading,
@@ -26,7 +26,7 @@ function Nextscreen({ navigate }) {
   };
 
   const producttoevoegen = () => {
-    navigate("Categorieoverzicht");
+    navigate("Categorie");
   };
 
   const products = [
@@ -120,6 +120,9 @@ function Nextscreen({ navigate }) {
         >
           <div className="ondertekst">
             <Text>Voeg producten toe aan de categorie "Planten"</Text>
+            <div className="catselect">
+              <TextField prefix="Categorie" />
+            </div>
           </div>
           <div className="productentoevoegen">
             <TextField type="searchbar" className="textsearchbar" />
