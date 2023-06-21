@@ -212,12 +212,14 @@ body {
 }
 
 .productentoevoegen img,
-.categoriebeheer img {
+.categoriebeheer img,
+.categorieoverzicht img {
   max-width: 30px;
   max-height: 30px;
 }
 
-.categoriebeheer {
+.categoriebeheer,
+.categorieoverzicht {
   background-color: white;
   padding: 10px;
   border-radius: 6px !important;
@@ -225,12 +227,18 @@ body {
   width: 60vw;
 }
 
-.table-cell {
-  padding-left: 80px !important;
+.table-cell,
+.table-cellname {
+  padding-left: 100px !important;
 }
 
-.table-cellname {
-  padding-left: 80px !important;
+.table-stock,
+.table-cellstock {
+  padding-left: 250px !important;
+}
+.table-cellprod,
+.table-cellsub {
+  padding-left: 100px;
 }
 
 .table-row {
@@ -240,7 +248,7 @@ body {
 
 .table-cellprice {
   float: right;
-  margin-left: 300px;
+  margin-left: 250px;
 }
 
 .table {

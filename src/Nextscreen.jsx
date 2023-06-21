@@ -129,7 +129,9 @@ function Nextscreen({ navigate }) {
             <table className="table">
               <thead className="thead">
                 <tr>
-                  <th></th>
+                  <th>
+                    <Checkbox />
+                  </th>
                   <th></th>
                   <th className="table-cellname">Product</th>
                   <th className="table-cellprice">Prijs</th>

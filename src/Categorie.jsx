@@ -23,40 +23,24 @@ function Categorie({ navigate }) {
       id: 1,
       image: Mickey,
       name: "Mickey",
+      stock: "3",
       price: "€10.00",
     },
     {
       id: 2,
       image: Bolcactus,
       name: "Bolcactus",
+      stock: "3",
       price: "€15.00",
     },
     {
       id: 3,
       image: Spriet,
       name: "Spriet",
-      price: "€20.00",
-    },
-    {
-      id: 4,
-      image: Mickey,
-      name: "Mickey",
-      price: "€10.00",
-    },
-    {
-      id: 5,
-      image: Bolcactus,
-      name: "Bolcactus",
-      price: "€15.00",
-    },
-    {
-      id: 6,
-      image: Spriet,
-      name: "Spriet",
+      stock: "3",
       price: "€20.00",
     },
   ];
-
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
@@ -90,9 +74,12 @@ function Categorie({ navigate }) {
           <table className="table">
             <thead className="thead">
               <tr>
-                <th></th>
+                <th>
+                  <Checkbox />
+                </th>
                 <th></th>
                 <th className="table-cellname">Product</th>
+                <th className="table-cellstock">Voorraad</th>
                 <th className="table-cellprice">Prijs</th>
               </tr>
             </thead>
@@ -106,6 +93,7 @@ function Categorie({ navigate }) {
                     <img src={product.image} alt={product.name} />
                   </td>
                   <td className="table-cell">{product.name}</td>
+                  <td className="table-stock">{product.stock}</td>
                   <td className="table-cellprice">{product.price}</td>
                 </tr>
               ))}
