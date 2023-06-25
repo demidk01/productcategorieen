@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
-import { FaAngleRight } from "react-icons/fa";
+import Bolcactus from "./assets/Bolcactus.png";
+import { FaAngleRight, FaAngleDown, FaTrashAlt } from "react-icons/fa";
 
 import {
   Button,
@@ -20,9 +21,28 @@ function Categorieoverzicht({ navigate }) {
       image: Mickey,
       name: "Planten",
       prods: "3",
-      sub: "0",
+      subcategories: [
+        {
+          id: 3,
+          image: Bolcactus,
+          name: "Cactussen",
+          prods: "6",
+          sub: "0",
+        },
+      ],
     },
   ];
+
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const toggleRow = (productId) => {
+    if (expandedRow === productId) {
+      setExpandedRow(null);
+    } else {
+      setExpandedRow(productId);
+    }
+  };
+
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
@@ -52,6 +72,7 @@ function Categorieoverzicht({ navigate }) {
           <div className="catview">
             <div className="toprow">
               <TextField type="searchbar" className="textsearchbar" />
+              <Text> 1 resultaat</Text>
               <Select className="selectbar" disabled="yes" />
             </div>
             <table className="table">
@@ -63,27 +84,65 @@ function Categorieoverzicht({ navigate }) {
                   <th></th>
                   <th></th>
                   <th className="table-cellname">Categorie</th>
-                  <th className="table-cellprod">Aantal producten</th>
-                  <th className="table-cellsub">Aantal subcategorieën</th>
+                  <th className="table-cellprod">Producten</th>
+                  <th className="table-cellsub">Subcategorieën</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((product) => (
-                  <tr key={product.id}>
-                    <td>
-                      <Checkbox />
-                    </td>
-                    <td>
-                      {" "}
-                      <FaAngleRight />
-                    </td>
-                    <td>
-                      <img src={product.image} alt={product.name} />
-                    </td>
-                    <td className="table-cell">{product.name}</td>
-                    <td className="table-stock">{product.prods}</td>
-                    <td className="table-cellprice">{product.sub}</td>
-                  </tr>
+                  <React.Fragment key={product.id}>
+                    <tr>
+                      <td>
+                        <Checkbox />
+                      </td>
+                      <td
+                        className="icondropdown"
+                        onClick={() => toggleRow(product.id)}
+                      >
+                        {expandedRow === product.id ? (
+                          <FaAngleDown />
+                        ) : (
+                          <FaAngleRight />
+                        )}
+                      </td>
+                      <td>
+                        <img src={product.image} alt={product.name} />
+                      </td>
+                      <td className="table-cell">{product.name}</td>
+                      <td className="table-prod">{product.prods}</td>
+                      <td className="table-sub">
+                        {product.subcategories.length}
+                      </td>
+                      <td className="icontrash">
+                        <FaTrashAlt />
+                      </td>
+                    </tr>
+                    {expandedRow === product.id && (
+                      <React.Fragment>
+                        {product.subcategories.map((subcategory) => (
+                          <tr key={subcategory.id}>
+                            <td>
+                              <Checkbox />
+                            </td>
+                            <td></td>
+                            <td>
+                              <img
+                                src={subcategory.image}
+                                alt={subcategory.name}
+                              />
+                            </td>
+                            <td className="table-cell">{subcategory.name}</td>
+                            <td className="table-prod">{subcategory.prods}</td>
+                            <td className="table-sub">{subcategory.sub}</td>
+                            <td className="icontrash">
+                              <FaTrashAlt />
+                            </td>
+                          </tr>
+                        ))}
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>

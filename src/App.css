@@ -241,6 +241,11 @@ body {
   padding-left: 100px;
 }
 
+.table-prod,
+.table-sub {
+  padding-left: 100px;
+}
+
 .table-row {
   display: flex;
   align-items: center;
@@ -255,8 +260,9 @@ body {
   margin-top: 20px !important;
 }
 
-.textsearchbar {
+.textsearchbar input {
   padding: 20px !important;
+  max-width: 200px !important;
 }
 
 .thead th {
@@ -271,6 +277,7 @@ body {
 
 .sc-iKGpAt.brEBPq {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .toprow {
@@ -294,4 +301,17 @@ body {
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
+}
+
+.icondropdown svg {
+  margin-right: 30px !important;
+}
+
+.icontrash svg {
+  margin-left: 100px !important;
+}
+
+.sc-kFuwaP.gvlhBg {
+  margin-top: 15px !important;
+  margin-left: 10px;
 }

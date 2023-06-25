@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
-import Nextscreen from "./Nextscreen";
 
 import {
   Button,
   Heading,
   Text,
   EmptyState,
-  IconButton,
   TextField,
   Modal,
 } from "@myonlinestore/bricks";
@@ -60,7 +58,6 @@ function Homescreen({ navigate }) {
             er niet tussen? Bekijk in het vraag & antwoord artikel hoe je een
             categorie aanmaakt. Wijzigingen worden automatisch opgeslagen.
           </Text>
-          <IconButton icon="filter" iconSize="small" />
         </div>
         <br />
         <br />
