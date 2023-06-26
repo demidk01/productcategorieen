@@ -12,14 +12,22 @@ function App() {
     setCurrentScreen(screen);
   };
 
-  return (
-    <div className="App">
-      {currentScreen === "Homescreen" && <Homescreen navigate={navigate} />}
-      {currentScreen === "Nextscreen" && <Nextscreen navigate={navigate} />}
-      {currentScreen === "Categorie" && <Categorie navigate={navigate} />}
-      {currentScreen === "Categorieoverzicht" && <Categorieoverzicht />}
-    </div>
-  );
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case "Homescreen":
+        return <Homescreen navigate={navigate} />;
+      case "Nextscreen":
+        return <Nextscreen navigate={navigate} />;
+      case "Categorie":
+        return <Categorie navigate={navigate} />;
+      case "Categorieoverzicht":
+        return <Categorieoverzicht navigate={navigate} />;
+      default:
+        return null;
+    }
+  };
+
+  return <div className="App">{renderScreen()}</div>;
 }
 
 export default App;

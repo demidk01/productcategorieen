@@ -3,6 +3,7 @@ import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
 import Bolcactus from "./assets/Bolcactus.png";
+import Tuinhandschoen from "./assets/tuinhandschoen.jpg";
 import { FaAngleRight, FaAngleDown, FaTrashAlt } from "react-icons/fa";
 
 import {
@@ -27,9 +28,16 @@ function Categorieoverzicht({ navigate }) {
           image: Bolcactus,
           name: "Cactussen",
           prods: "6",
-          sub: "0",
+          sub: "-",
         },
       ],
+    },
+    {
+      id: 2,
+      image: Tuinhandschoen,
+      name: "Tuinhandschoenen",
+      prods: "18",
+      subcategories: [],
     },
   ];
 
@@ -41,6 +49,10 @@ function Categorieoverzicht({ navigate }) {
     } else {
       setExpandedRow(productId);
     }
+  };
+
+  const handleRowClick = () => {
+    navigate("Categorie");
   };
 
   return (
@@ -63,7 +75,7 @@ function Categorieoverzicht({ navigate }) {
           <Button
             className="instellingen"
             variant="secondary"
-            title="Nieuwe subcategorie"
+            title="Nieuwe categorie"
           />
         </div>
         <br />
@@ -109,9 +121,13 @@ function Categorieoverzicht({ navigate }) {
                       <td>
                         <img src={product.image} alt={product.name} />
                       </td>
-                      <td className="table-cell">{product.name}</td>
-                      <td className="table-prod">{product.prods}</td>
-                      <td className="table-sub">
+                      <td className="table-cell" onClick={handleRowClick}>
+                        {product.name}
+                      </td>
+                      <td className="table-prod" onClick={handleRowClick}>
+                        {product.prods}
+                      </td>
+                      <td className="table-sub" onClick={handleRowClick}>
                         {product.subcategories.length}
                       </td>
                       <td className="icontrash">
@@ -132,9 +148,15 @@ function Categorieoverzicht({ navigate }) {
                                 alt={subcategory.name}
                               />
                             </td>
-                            <td className="table-cell">{subcategory.name}</td>
-                            <td className="table-prod">{subcategory.prods}</td>
-                            <td className="table-sub">{subcategory.sub}</td>
+                            <td className="table-cell" onClick={handleRowClick}>
+                              {subcategory.name}
+                            </td>
+                            <td className="table-prod" onClick={handleRowClick}>
+                              {subcategory.prods}
+                            </td>
+                            <td className="table-sub" onClick={handleRowClick}>
+                              {subcategory.sub}
+                            </td>
                             <td className="icontrash">
                               <FaTrashAlt />
                             </td>
@@ -146,11 +168,6 @@ function Categorieoverzicht({ navigate }) {
                 ))}
               </tbody>
             </table>
-            <Button
-              className="producttoevoegenadd"
-              variant="secondary"
-              title="Product toevoegen"
-            />
           </div>
         </div>
       </div>
