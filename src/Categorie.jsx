@@ -41,6 +41,12 @@ function Categorie({ navigate }) {
       price: "€20.00",
     },
   ];
+
+  const options = [
+    { label: "Prijs wijzigen", value: "option-a" },
+    { label: "Verwijderen", value: "option-b" },
+  ];
+
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
@@ -69,7 +75,7 @@ function Categorie({ navigate }) {
         <div className="categoriebeheer">
           <div className="toprow">
             <TextField type="searchbar" className="textsearchbar" />
-            <Select className="selectbar" disabled="yes" />
+            <Select className="selectbar" options={options} />
           </div>
           <table className="table">
             <thead className="thead">

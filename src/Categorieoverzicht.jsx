@@ -55,6 +55,12 @@ function Categorieoverzicht({ navigate }) {
     navigate("Categorie");
   };
 
+  const options = [
+    { label: "Prijs wijzigen", value: "option-a" },
+    { label: "Verwijderen", value: "option-b" },
+    { label: "Plaatsen op pagina", value: "option-c" },
+  ];
+
   return (
     <div className="App">
       <Sidebar logo={MWWlogo} />
@@ -85,7 +91,7 @@ function Categorieoverzicht({ navigate }) {
             <div className="toprow">
               <TextField type="searchbar" className="textsearchbar" />
               <Text> 1 resultaat</Text>
-              <Select className="selectbar" disabled="yes" />
+              <Select className="selectbar" options={options} />
             </div>
             <table className="table">
               <thead className="thead">
