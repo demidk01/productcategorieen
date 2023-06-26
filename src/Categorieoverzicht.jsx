@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
 import Bolcactus from "./assets/Bolcactus.png";
 import Tuinhandschoen from "./assets/tuinhandschoen.jpg";
-import { FaAngleRight, FaAngleDown, FaTrashAlt } from "react-icons/fa";
+import Tuinmeubel from "./assets/tuinmeubel.jpg";
+import Grasmaaier from "./assets/grasmaaier.jpg";
+import Tuingereedschap from "./assets/tuingereedschap.jpg";
+import {
+  FaAngleRight,
+  FaAngleDown,
+  FaTrashAlt,
+  FaPlusCircle,
+} from "react-icons/fa";
 
 import {
   Button,
@@ -13,9 +21,22 @@ import {
   TextField,
   Select,
   Checkbox,
+  Modal,
+  Toast,
 } from "@myonlinestore/bricks";
 
 function Categorieoverzicht({ navigate }) {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const products = [
     {
       id: 1,
@@ -39,6 +60,27 @@ function Categorieoverzicht({ navigate }) {
       prods: "18",
       subcategories: [],
     },
+    {
+      id: 4,
+      image: Tuinmeubel,
+      name: "Tuinmeubels",
+      prods: "44",
+      subcategories: [],
+    },
+    {
+      id: 5,
+      image: Grasmaaier,
+      name: "Grasmaaiers",
+      prods: "7",
+      subcategories: [],
+    },
+    {
+      id: 6,
+      image: Tuingereedschap,
+      name: "Tuingereedschap",
+      prods: "26",
+      subcategories: [],
+    },
   ];
 
   const [expandedRow, setExpandedRow] = useState(null);
@@ -58,13 +100,33 @@ function Categorieoverzicht({ navigate }) {
   const options = [
     { label: "Prijs wijzigen", value: "option-a" },
     { label: "Verwijderen", value: "option-b" },
-    { label: "Plaatsen op pagina", value: "option-c" },
   ];
+
+  const handleSelectChange = (value) => {
+    if (value === "option-b") {
+      setModalOpen(true);
+    }
+  };
+
+  const removeCat = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="App">
+      {" "}
+      {showPopup && (
+        <Toast
+          show="yes"
+          severity="success"
+          title="Categorie Planten is opgeslagen."
+        />
+      )}
       <Sidebar logo={MWWlogo} />
-
       <div className="content">
         <div className="topbar">
           <div className="searchbar">
@@ -90,9 +152,38 @@ function Categorieoverzicht({ navigate }) {
           <div className="catview">
             <div className="toprow">
               <TextField type="searchbar" className="textsearchbar" />
-              <Text> 1 resultaat</Text>
-              <Select className="selectbar" options={options} />
+              <Text> 5 resultaten</Text>
+              <Select
+                className="selectbar"
+                options={options}
+                placeholder={
+                  <span>
+                    Selecteer actie <FaAngleDown />{" "}
+                  </span>
+                }
+                onChange={handleSelectChange}
+              />
             </div>
+            {modalOpen && (
+              <Modal
+                size="medium"
+                show={modalOpen}
+                title="Categorie verwijderen?"
+                onClose={closeModal}
+              >
+                <div className="catremovetext">
+                  <Text>
+                    Weet je zeker dat je deze categorie wilt verwijderen? Je
+                    kunt dit niet ongedaan maken!
+                  </Text>
+                </div>
+                <Button
+                  className="toevoegenbutton"
+                  title="Verwijderen"
+                  variant="destructive"
+                />
+              </Modal>
+            )}
             <table className="table">
               <thead className="thead">
                 <tr>
@@ -137,7 +228,8 @@ function Categorieoverzicht({ navigate }) {
                         {product.subcategories.length}
                       </td>
                       <td className="icontrash">
-                        <FaTrashAlt />
+                        <FaPlusCircle />
+                        <FaTrashAlt onClick={removeCat} />
                       </td>
                     </tr>
                     {expandedRow === product.id && (
@@ -164,6 +256,7 @@ function Categorieoverzicht({ navigate }) {
                               {subcategory.sub}
                             </td>
                             <td className="icontrash">
+                              <FaPlusCircle />
                               <FaTrashAlt />
                             </td>
                           </tr>

@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
 import Bolcactus from "./assets/Bolcactus.png";
 import Spriet from "./assets/spriet.jpg";
+import { FaAngleDown } from "react-icons/fa";
 
 import {
   Button,
@@ -75,7 +76,15 @@ function Categorie({ navigate }) {
         <div className="categoriebeheer">
           <div className="toprow">
             <TextField type="searchbar" className="textsearchbar" />
-            <Select className="selectbar" options={options} />
+            <Select
+              className="selectbar"
+              options={options}
+              placeholder={
+                <span>
+                  Selecteer actie <FaAngleDown />{" "}
+                </span>
+              }
+            />
           </div>
           <table className="table">
             <thead className="thead">

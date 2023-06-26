@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MWWlogo from "./assets/MWW-logo.png";
 import Sidebar from "./Sidebar";
 import Mickey from "./assets/mickey.jpg";
@@ -13,10 +13,21 @@ import {
   TextField,
   Modal,
   Checkbox,
+  Toast,
 } from "@myonlinestore/bricks";
 
 function Nextscreen({ navigate }) {
   const [showModal, setShowModal] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const openModal = () => {
     setShowModal(true);
   };
@@ -70,8 +81,15 @@ function Nextscreen({ navigate }) {
 
   return (
     <div className="App">
+      {" "}
+      {showPopup && (
+        <Toast
+          show="yes"
+          severity="success"
+          title="Categorie Planten is aangemaakt. Je kunt deze nu vullen met producten."
+        />
+      )}
       <Sidebar logo={MWWlogo} />
-
       <div className="content">
         <div className="topbar">
           <div className="searchbar">
@@ -110,7 +128,6 @@ function Nextscreen({ navigate }) {
           />
         </div>
       </div>
-
       {showModal && (
         <Modal
           size="medium"

@@ -308,10 +308,25 @@ body {
 }
 
 .icontrash svg {
-  margin-left: 100px !important;
+  margin-left: 20px !important;
 }
 
 .sc-kFuwaP.gvlhBg {
-  margin-top: 15px !important;
   margin-left: 10px;
+}
+
+.table-cell,
+.table-prod,
+.table-sub {
+  cursor: pointer;
+}
+
+.icontrash {
+  display: flex;
+  margin-left: 5vw;
+  cursor: pointer;
+}
+
+.catremovetext {
+  text-align: left;
 }
